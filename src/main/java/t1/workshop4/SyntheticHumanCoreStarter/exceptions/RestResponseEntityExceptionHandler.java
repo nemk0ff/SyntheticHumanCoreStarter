@@ -1,4 +1,4 @@
-package t1.workshop4.SyntheticHumanCoreStarter.controller;
+package t1.workshop4.SyntheticHumanCoreStarter.exceptions;
 
 import jakarta.annotation.Nullable;
 import jakarta.validation.ConstraintViolationException;
@@ -88,6 +88,11 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     problemDetail.setProperty("errors", errors);
 
     return new ResponseEntity<>(problemDetail, headers, HttpStatus.BAD_REQUEST);
+  }
+
+  @ExceptionHandler(CommandQueueFullException.class)
+  public ResponseEntity<String> handleQueueFull(CommandQueueFullException ex) {
+    return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).body(ex.getMessage());
   }
 
   private ProblemDetail problemDetailBuilder(String title, WebRequest request,
