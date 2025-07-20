@@ -6,6 +6,8 @@
 - Обрабатывает ошибки
 
 ---
+Для быстрого перехода к инструкции по запуску:
+[нажмите сюда](#docker-instructions)
 
 ### **Технологический стек**
 ```
@@ -77,7 +79,7 @@ Spring Boot 3
 
 ---
 
-### **4. Пример Workflow**
+### **Пример Workflow**
 
 1. **Оператор** отправляет команду через REST API
 2. **Система**:
@@ -88,3 +90,24 @@ Spring Boot 3
     - Записывает действие в Kafka/консоль
 4. **Мониторинг**:
     - Обновляет метрики (очередь, performance)
+
+<a id="docker-instructions"></a>
+
+### 🐳Сборка и запуск
+   Соберите проект:
+
+```bash
+./mvnw clean package
+```
+Запустите все сервисы:
+
+```bash
+docker-compose up -d --build
+```
+Проверьте сервисы:
+
+Приложение: http://localhost:8080/api/commands
+
+Prometheus: http://localhost:9090
+
+Grafana: http://localhost:3000 (логин: admin/admin)
