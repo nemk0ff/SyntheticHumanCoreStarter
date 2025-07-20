@@ -9,5 +9,4 @@ public class SyntheticHumanCoreStarterApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SyntheticHumanCoreStarterApplication.class, args);
 	}
-
 }

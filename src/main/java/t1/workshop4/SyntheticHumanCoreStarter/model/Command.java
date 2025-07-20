@@ -5,9 +5,12 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Command {
@@ -23,4 +26,8 @@ public class Command {
   @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
       message = "Time must be in ISO-8601 format")
   private String time;
+
+  public @Size(max = 1000, message = "Description must be less than 1000 characters") String getDescription() {
+    return description;
+  }
 }
